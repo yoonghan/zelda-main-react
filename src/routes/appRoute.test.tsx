@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import routes from "./appRoute";
-import React from "react";
 
 describe("appRoute", () => {
   const Wrapper = ({ goto }: { goto: string[] }) => {
