@@ -2,6 +2,11 @@
 
 This is an main page for microfrontend.
 
+---
+
+[![Build Status][build-badge]][build]
+[![Code Coverage][coverage-badge]][coverage]
+
 ## Usage
 
 1. Execute the project for use with zelda-root
@@ -35,3 +40,8 @@ npm run start:standalone
 ## Github PAT permission required
 
 1. For accessing private repo, please allow Profile -> Settings -> Personal Access Token (classic), open read:packages (basically th esame as vercel deployment). For more info refer: https://docs.github.com/en/packages/working-with-a-github-packages-registry. Add as Github secret in Settings->Secrets And variable and add NPM_TOKEN key. NOTE: In merge NODE_AUTH_TOKEN is used instead.
+
+[build-badge]: https://img.shields.io/github/actions/workflow/status/yoonghan/zelda-main-react/pull-request.yml
+[build]: https://github.com/yoonghan/zelda-main-react/actions?query=workflow
+[coverage-badge]: https://img.shields.io/codecov/c/github/yoonghan/zelda-main-react.svg?style=flat-square
+[coverage]: https://codecov.io/gh/yoonghan/zelda-main-react
