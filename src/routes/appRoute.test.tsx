@@ -18,4 +18,9 @@ describe("appRoute", () => {
     render(<Wrapper goto={["/"]} />);
     expect(screen.queryByText("Not Found")).not.toBeInTheDocument();
   });
+
+  it("should show be able to navigate to about", () => {
+    render(<Wrapper goto={["/about"]} />);
+    expect(screen.queryByText("Not Found")).not.toBeInTheDocument();
+  });
 });
