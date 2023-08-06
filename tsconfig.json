@@ -2,9 +2,9 @@
   "extends": "ts-config-single-spa",
   "compilerOptions": {
     "jsx": "react-jsx",
+    "declaration": true,
     "declarationDir": "dist"
   },
   "files": ["src/walcron-zelda-main-react.tsx"],
-  "include": ["src/**/*"],
-  "exclude": ["src/**/*.test*"]
+  "include": ["src/**/*"]
 }
