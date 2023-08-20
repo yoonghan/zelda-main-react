@@ -5,7 +5,7 @@ describe("Root component", () => {
   it("should be in the document", () => {
     const { getByText } = render(<Root name="Testapp" />);
     expect(
-      getByText("This site is used as main welcome page for users visit.")
+      getByText("Walcron's Microfrontend - Zelda version")
     ).toBeInTheDocument();
   });
 });
