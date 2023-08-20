@@ -3,6 +3,7 @@ import Root from "./Root";
 import ErrorPage from "./ExtendedErrorPage";
 import { RouteObject } from "react-router-dom";
 import Main from "./Main";
+import Chart from "./Chart";
 
 const routes: RouteObject[] = [
   {
@@ -13,6 +14,10 @@ const routes: RouteObject[] = [
       {
         path: "",
         element: <Main />,
+      },
+      {
+        path: "chart",
+        element: <Chart />,
       },
       {
         path: "about",
