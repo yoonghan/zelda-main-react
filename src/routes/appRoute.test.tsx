@@ -8,18 +8,19 @@ describe("appRoute", () => {
     return <RouterProvider router={router} />;
   };
 
+  const assertPageIsRoutable = (uri: string) => {
+    render(<Wrapper goto={[uri]} />);
+    expect(screen.queryByText("Not Found")).not.toBeInTheDocument();
+  };
+
   it("should show exception when the route is not valid", () => {
     render(<Wrapper goto={["/isnotvalid"]} />);
     expect(screen.getByText("Not Found")).toBeInTheDocument();
   });
 
-  it("should show be able to navigate to root", () => {
-    render(<Wrapper goto={["/"]} />);
-    expect(screen.queryByText("Not Found")).not.toBeInTheDocument();
-  });
-
-  it("should show be able to navigate to about", () => {
-    render(<Wrapper goto={["/about"]} />);
-    expect(screen.queryByText("Not Found")).not.toBeInTheDocument();
+  it("should be able to navigate to valid routes", () => {
+    assertPageIsRoutable("/");
+    assertPageIsRoutable("/about");
+    assertPageIsRoutable("/chart");
   });
 });
