@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Root from "./Root";
+import Root from ".";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 
 describe("Root", () => {
