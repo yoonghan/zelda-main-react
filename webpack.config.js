@@ -1,5 +1,6 @@
 const { merge } = require("webpack-merge");
 const singleSpaDefaults = require("webpack-config-single-spa-react-ts");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = (webpackConfigEnv, argv) => {
   const defaultConfig = singleSpaDefaults({
@@ -9,7 +10,17 @@ module.exports = (webpackConfigEnv, argv) => {
     argv,
   });
 
-  return merge(defaultConfig, {
-    // modify the webpack config however you'd like to by adding to this object
-  });
+  const additionalConfigs = webpackConfigEnv.standalone
+    ? {}
+    : {
+        plugins: [
+          new HtmlWebpackPlugin({
+            inject: false,
+            template: "src/about.ejs",
+            filename: "index.html",
+          }),
+        ],
+      };
+
+  return merge(defaultConfig, additionalConfigs);
 };
