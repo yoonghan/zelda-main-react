@@ -54,11 +54,27 @@ export default function Main() {
               "It's easier to use as long the linked framework adheres to mount/unmount and bootstrap. However due to the shell has no logic, it requires more module seperation to communicate between different applications.",
           },
           {
-            title: "Seperation of standalone/integration",
+            title: "Separation of standalone/integration",
             description:
               "Application requires to runs differently in standalone mode vs integration mode.",
             subDescription:
               "In standalone mode there is no mount/unmount/bootstrap. While integration mode doesn't serve the main page.",
+            links: [
+              {
+                title: "Standalone mode ONLY",
+                href: "https://github.com/yoonghan/zelda-main-react/blob/master/src/index.ejs",
+              },
+              {
+                title: "Only serves main JS",
+                href: "https://zelda-auth.walcron.com/walcron-zelda-auth-react.js",
+              },
+            ],
+          },
+          {
+            title: "Styling",
+            description: "Independant styling within all application.",
+            subDescription:
+              "All application contains it's own styling except for header which comes from root container. But for body against footer there are so much dependencies required that some html are share among container and apps.",
             links: [
               {
                 title: "No main page",
