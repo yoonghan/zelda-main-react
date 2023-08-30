@@ -28,7 +28,7 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^14.0.0",
     "@types/testing-library__jest-dom": "^5.14.1",
-    "@yoonghan/walcron-microfrontend-shared": "^2.0.0",
+    "@yoonghan/walcron-microfrontend-shared": "^2.1.0",
     "babel-jest": "^27.0.6",
     "concurrently": "^6.2.1",
     "cross-env": "^7.0.3",
