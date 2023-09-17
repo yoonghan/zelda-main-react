@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { LinkBehavior } from ".";
+import LinkBehavior from ".";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 
 describe("LinkBehavior", () => {
