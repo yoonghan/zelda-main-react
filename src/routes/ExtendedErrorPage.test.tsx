@@ -2,7 +2,6 @@ import ErrorPage from "./ExtendedErrorPage";
 import { render, screen } from "@testing-library/react";
 import { RouterProvider, createMemoryRouter } from "react-router-dom";
 import Root from "./Root";
-import React from "react";
 
 describe("ExtendedErrorPage", () => {
   const renderComponent = (initialPageEntry: string) => {

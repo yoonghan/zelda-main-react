@@ -13,7 +13,7 @@ export default function Main() {
         }}
       >
         <Typography component="h1" variant="h3" align="center">
-          Walcron's Microfrontend - Zelda version
+          Walcron&apos;s Microfrontend - Zelda version
         </Typography>
         <br />
         <Typography component="p">

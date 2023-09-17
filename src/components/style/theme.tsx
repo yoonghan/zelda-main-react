@@ -3,7 +3,7 @@
 import { createTheme } from "@mui/material/styles";
 import { green, purple } from "@mui/material/colors";
 import { LinkProps } from "@mui/material/Link";
-import { LinkBehavior } from "../LinkBehavior";
+import LinkBehavior from "../LinkBehavior";
 
 const theme = createTheme({
   palette: {
