@@ -1,30 +1,30 @@
-import About from "./About";
-import Root from "./Root";
-import ErrorPage from "./ExtendedErrorPage";
-import { RouteObject } from "react-router-dom";
-import Main from "./Main";
-import Chart from "./Chart";
+import About from './About'
+import Root from './Root'
+import ErrorPage from './ExtendedErrorPage'
+import { type RouteObject } from 'react-router-dom'
+import Main from './Main'
+import Chart from './Chart'
 
 const routes: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <Root />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
+        path: '',
         element: <Main />,
       },
       {
-        path: "chart",
+        path: 'chart',
         element: <Chart />,
       },
       {
-        path: "about",
+        path: 'about',
         element: <About />,
       },
     ],
   },
-];
+]
 
-export default routes;
+export default routes

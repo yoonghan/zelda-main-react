@@ -5,24 +5,28 @@
     "jest/globals": true
   },
   "extends": [
+    "standard-with-typescript",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
-    "standard"
+    "plugin:react-hooks/recommended"
   ],
-  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
+    "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "plugins": ["react", "@typescript-eslint", "jest"],
   "rules": {
-    "semi": "off",
-    "comma-dangle": "off",
-    "quotes": "off",
-    "space-before-function-paren": "off"
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/indent": "off"
+  },
+  "settings": {
+    "react": {
+      "pragma": "React", // Pragma to use, default to "React"
+      "version": "detect"
+    }
   }
 }

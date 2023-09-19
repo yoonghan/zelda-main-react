@@ -5,29 +5,29 @@ import {
   Card,
   CardActions,
   Button,
-} from "@mui/material";
+} from '@mui/material'
 
-type ContentProps = {
-  title: string;
-  description: string;
-  subDescription: string;
-  links?: {
-    title: string;
-    href: string;
-  }[];
-};
+interface ContentProps {
+  title: string
+  description: string
+  subDescription: string
+  links?: Array<{
+    title: string
+    href: string
+  }>
+}
 
-type Props = {
-  contents: ContentProps[];
-};
+interface Props {
+  contents: ContentProps[]
+}
 
 const ContentList = ({ contents }: Props) => {
   return (
     <Box
       sx={{
         mt: 8,
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         gap: 2,
       }}
     >
@@ -56,7 +56,7 @@ const ContentList = ({ contents }: Props) => {
         </Card>
       ))}
     </Box>
-  );
-};
+  )
+}
 
-export default ContentList;
+export default ContentList
