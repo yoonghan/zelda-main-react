@@ -1,20 +1,20 @@
-import { render, screen, within } from "@testing-library/react";
-import About from ".";
+import { render, screen, within } from '@testing-library/react'
+import About from '.'
 
-describe("About", () => {
-  it("should render correctly", () => {
-    render(<About />);
-    expect(screen.getByText("About")).toBeInTheDocument();
+describe('About', () => {
+  it('should render correctly', () => {
+    render(<About />)
+    expect(screen.getByText('About')).toBeInTheDocument()
     expect(
       screen.getByText(
-        "This site is used as main welcome page for users visit."
+        'This site is used as main welcome page for users visit.'
       )
-    ).toBeInTheDocument();
-  });
+    ).toBeInTheDocument()
+  })
 
-  it("should reflect the latest version", () => {
-    render(<About />);
-    const version = screen.getByText("Version");
-    expect(within(version).getByText("1.0.0")).toBeInTheDocument();
-  });
-});
+  it('should reflect the latest version', () => {
+    render(<About />)
+    const version = screen.getByText('Version')
+    expect(within(version).getByText('1.0.0')).toBeInTheDocument()
+  })
+})
