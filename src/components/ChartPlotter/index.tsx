@@ -36,12 +36,12 @@ export const options = {
 
 export const writeData = (
   data: number[],
-  labels: string[]
+  label: string
 ): ChartData<'line', number[], string> => ({
-  labels,
+  labels: [label],
   datasets: [
     {
-      label: 'Dataset 1',
+      label,
       data,
       borderColor: 'rgb(255, 99, 132)',
       backgroundColor: 'rgba(255, 99, 132, 0.5)',
@@ -51,14 +51,8 @@ export const writeData = (
   ],
 })
 
-const ChartPlotter = ({
-  data,
-  labels,
-}: {
-  data: number[]
-  labels: string[]
-}) => {
-  return <Line options={options} data={writeData(data, labels)} />
+const ChartPlotter = ({ data, label }: { data: number[]; label: string }) => {
+  return <Line options={options} data={writeData(data, label)} />
 }
 
 export default ChartPlotter
