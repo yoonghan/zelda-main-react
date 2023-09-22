@@ -3,6 +3,10 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import routes from './appRoute'
 
 describe('appRoute', () => {
+  beforeEach(() => {
+    jest.spyOn(console, 'warn').mockImplementation(() => {})
+  })
+
   const Wrapper = ({ goto }: { goto: string[] }) => {
     const router = createMemoryRouter(routes, { initialEntries: goto })
     return <RouterProvider router={router} />
