@@ -1,5 +1,9 @@
+import { render } from '@testing-library/react'
+import Chart from '.'
+
 describe('Chart', () => {
   it('should render component correctly', () => {
-    expect(1).toBe(1)
+    const { getByText } = render(<Chart />)
+    expect(getByText('Webworker monitor')).toBeInTheDocument()
   })
 })
