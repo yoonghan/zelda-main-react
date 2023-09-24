@@ -15,8 +15,6 @@ function reducer(state: number[], action: Action) {
   switch (type) {
     case Actions.APPEND:
       return [...state, value]
-    default:
-      return state
   }
 }
 
