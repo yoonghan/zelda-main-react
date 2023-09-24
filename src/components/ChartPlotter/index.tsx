@@ -8,8 +8,8 @@ import {
   Title,
   Tooltip,
   Legend,
-  type ChartData,
 } from 'chart.js'
+import { writeData } from './plotterHelper'
 
 ChartJS.register(
   CategoryScale,
@@ -34,25 +34,12 @@ export const options = {
   },
 }
 
-export const writeData = (
-  data: number[],
-  label: string
-): ChartData<'line', number[], string> => ({
-  labels: [label],
-  datasets: [
-    {
-      label,
-      data,
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      borderWidth: 1,
-      pointStyle: 'cross',
-    },
-  ],
-})
-
-const ChartPlotter = ({ data, label }: { data: number[]; label: string }) => {
-  return <Line options={options} data={writeData(data, label)} />
-}
+const ChartPlotter = ({
+  data,
+  labels,
+}: {
+  data: number[][]
+  labels: string[]
+}) => <Line options={options} data={writeData(data, labels)} />
 
 export default ChartPlotter

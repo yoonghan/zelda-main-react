@@ -1,4 +1,4 @@
-import { useReducer } from 'react'
+import { useCallback, useReducer } from 'react'
 
 enum Actions {
   APPEND,
@@ -23,9 +23,9 @@ function reducer(state: number[], action: Action) {
 export const useChartUpdater = (initialData = []) => {
   const [data, dispatch] = useReducer(reducer, initialData)
 
-  const append = (value: number) => {
+  const append = useCallback((value: number) => {
     dispatch({ type: Actions.APPEND, value })
-  }
+  }, [])
 
   return {
     data,

@@ -3,11 +3,19 @@ import BullsEye from '../../components/BullsEye'
 import ChartPlotter from '../../components/ChartPlotter'
 import { useChartUpdater } from '../../components/ChartPlotter/useChartUpdater'
 import { useCallback } from 'react'
+import { type Position } from '../../components/BullsEye/type/position'
 
 const Chart = () => {
-  const { data } = useChartUpdater([])
+  const { data: xData, append: appendX } = useChartUpdater([])
+  const { data: yData, append: appendY } = useChartUpdater([])
 
-  const emitNewPosition = useCallback(() => {}, [])
+  const emitNewPosition = useCallback(
+    (position: Position) => {
+      appendX(position.x)
+      appendY(position.y)
+    },
+    [appendX, appendY]
+  )
 
   return (
     <Box>
@@ -26,7 +34,10 @@ const Chart = () => {
           />
         </Grid>
         <Grid item xs={12}>
-          <ChartPlotter data={data} label={'Distance from target'} />
+          <ChartPlotter
+            data={[xData, yData]}
+            labels={['X Distance', 'Y Distance']}
+          />
         </Grid>
       </Grid>
     </Box>
