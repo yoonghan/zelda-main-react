@@ -17,7 +17,7 @@ const routes: RouteObject[] = [
       },
       {
         path: 'chart',
-        element: <Chart />,
+        element: <Chart debug={true} />,
       },
       {
         path: 'about',
