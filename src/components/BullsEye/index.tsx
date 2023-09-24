@@ -1,13 +1,20 @@
 import { type CSSProperties, useEffect, useRef } from 'react'
 import useDistanceCalculator from './useDistanceCalculator'
+import { type Position } from './type/position'
 
 interface Props {
   dimension: number
   targetId: string
   debug?: boolean
+  emitNewPosition: (position: Position) => void
 }
 
-const BullsEye = ({ dimension, targetId, debug }: Props): JSX.Element => {
+const BullsEye = ({
+  dimension,
+  targetId,
+  debug,
+  emitNewPosition,
+}: Props): JSX.Element => {
   const { registerTarget, globalMouseDistanceFromTarget } =
     useDistanceCalculator()
   const targetRef = useRef<HTMLDivElement>()
@@ -15,6 +22,15 @@ const BullsEye = ({ dimension, targetId, debug }: Props): JSX.Element => {
   useEffect(() => {
     registerTarget(targetRef.current)
   }, [registerTarget])
+
+  useEffect(() => {
+    queueMicrotask(() => {
+      emitNewPosition({
+        x: globalMouseDistanceFromTarget.x,
+        y: globalMouseDistanceFromTarget.y,
+      })
+    })
+  }, [emitNewPosition, globalMouseDistanceFromTarget])
 
   const outerStyle = {
     minWidth: dimension,
