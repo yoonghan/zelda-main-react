@@ -5,16 +5,29 @@ import { useChartUpdater } from '../../components/ChartPlotter/useChartUpdater'
 import { useCallback } from 'react'
 import { type Position } from '../../components/BullsEye/type/position'
 
-const Chart = () => {
+interface Prop {
+  monitorEmitter?: (position: Position) => void
+  debug: boolean
+}
+
+const Chart = ({ monitorEmitter, debug }: Prop) => {
   const { data: xData, append: appendX } = useChartUpdater([])
   const { data: yData, append: appendY } = useChartUpdater([])
 
   const emitNewPosition = useCallback(
     (position: Position) => {
-      appendX(position.x)
-      appendY(position.y)
+      const y = position.y * -1
+      const x = position.x
+      appendX(x)
+      appendY(y)
+      if (monitorEmitter) {
+        monitorEmitter({
+          x,
+          y,
+        })
+      }
     },
-    [appendX, appendY]
+    [appendX, appendY, monitorEmitter]
   )
 
   return (
@@ -29,7 +42,7 @@ const Chart = () => {
           <BullsEye
             dimension={200}
             targetId={'target'}
-            debug={true}
+            debug={debug}
             emitNewPosition={emitNewPosition}
           />
         </Grid>

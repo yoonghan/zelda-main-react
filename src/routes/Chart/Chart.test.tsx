@@ -3,7 +3,10 @@ import Chart from '.'
 
 describe('Chart', () => {
   it('should render component correctly', async () => {
-    const { getByText } = render(<Chart />)
+    const monitorFn = jest.fn()
+    const { getByText } = render(
+      <Chart monitorEmitter={monitorFn} debug={true} />
+    )
     expect(getByText('Webworker monitor')).toBeInTheDocument()
     fireEvent.mouseMove(window, { clientX: 100, clientY: 100 })
     await waitFor(
@@ -12,5 +15,6 @@ describe('Chart', () => {
       },
       { interval: 5000 }
     )
+    expect(monitorFn).toHaveBeenCalledWith({ x: 100, y: -100 })
   })
 })
