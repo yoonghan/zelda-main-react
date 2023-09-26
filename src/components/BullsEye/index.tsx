@@ -1,7 +1,6 @@
 import { type CSSProperties, useEffect, useRef } from 'react'
 import useDistanceCalculator from './useDistanceCalculator'
 import { type Position } from './type/position'
-import { useWindowListener } from '@yoonghan/walcron-microfrontend-shared'
 
 interface Props {
   dimension: number
@@ -18,12 +17,11 @@ const BullsEye = ({
 }: Props): JSX.Element => {
   const { registerTarget, globalMouseDistanceFromTarget } =
     useDistanceCalculator()
-  const { height: windowHeight, width: windowWidth } = useWindowListener()
   const targetRef = useRef<HTMLDivElement>()
 
   useEffect(() => {
     registerTarget(targetRef.current)
-  }, [registerTarget, windowHeight, windowWidth])
+  }, [registerTarget])
 
   useEffect(() => {
     queueMicrotask(() => {

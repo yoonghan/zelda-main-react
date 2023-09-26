@@ -1,25 +1,36 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 
 const useDistanceCalculator = () => {
+  const targetElem = useRef<HTMLDivElement>(null)
   const [globalMouseDistanceFromTarget, setGlobalMouseDistanceFromTarget] =
     useState({ x: 0, y: 0 })
-  const [targetPos, setTargetPos] = useState({
-    offsetLeft: 0,
-    offsetTop: 0,
-  })
 
   const registerTarget = useCallback((elem: HTMLDivElement) => {
-    const boundary = elem.getBoundingClientRect()
-    setTargetPos({
-      offsetLeft: boundary.left,
-      offsetTop: boundary.top,
-    })
+    targetElem.current = elem
   }, [])
+
+  const getOffset = (): {
+    offsetLeft: number
+    offsetTop: number
+  } => {
+    if (targetElem.current !== null) {
+      const boundary = targetElem.current?.getBoundingClientRect()
+      return {
+        offsetLeft: boundary.left,
+        offsetTop: boundary.top,
+      }
+    }
+    return {
+      offsetLeft: 0,
+      offsetTop: 0,
+    }
+  }
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      const posX = event.clientX - targetPos.offsetLeft
-      const posY = event.clientY - targetPos.offsetTop
+      const targetOffset = getOffset()
+      const posX = event.clientX - targetOffset.offsetLeft
+      const posY = event.clientY - targetOffset.offsetTop
 
       setGlobalMouseDistanceFromTarget({
         x: posX,
@@ -32,7 +43,7 @@ const useDistanceCalculator = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [targetPos])
+  }, [])
 
   return {
     globalMouseDistanceFromTarget,
