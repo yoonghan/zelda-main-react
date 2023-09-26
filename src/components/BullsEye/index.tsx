@@ -1,6 +1,7 @@
 import { type CSSProperties, useEffect, useRef } from 'react'
 import useDistanceCalculator from './useDistanceCalculator'
 import { type Position } from './type/position'
+import { css } from '@emotion/css'
 
 interface Props {
   dimension: number
@@ -8,6 +9,8 @@ interface Props {
   debug?: boolean
   emitNewPosition: (position: Position) => void
 }
+
+const targetColor = 'red'
 
 const BullsEye = ({
   dimension,
@@ -40,16 +43,6 @@ const BullsEye = ({
     position: 'relative' as const,
   }
 
-  const innerStyle: CSSProperties = {
-    position: 'absolute' as const,
-    transform: 'translate(-50%, -50%)',
-    height: 1,
-    width: 1,
-    backgroundColor: 'red',
-    top: '50%',
-    left: '50%',
-  }
-
   return (
     <div style={outerStyle}>
       {debug && (
@@ -59,7 +52,39 @@ const BullsEye = ({
         </span>
       )}
       <div
-        style={innerStyle}
+        className={css`
+          position: absolute;
+          transform: translate(-50%, -50%);
+          height: 3px;
+          width: 3px;
+          background-color: ${targetColor};
+          top: 50%;
+          left: 50%;
+
+          &:before {
+            content: '';
+            border: 1px solid ${targetColor};
+            width: 30px;
+            height: 30px;
+            display: block;
+            border-radius: 15px;
+            top: -15px;
+            position: absolute;
+            left: -15px;
+          }
+
+          &:after {
+            content: '';
+            border: 1px solid ${targetColor};
+            width: 50px;
+            height: 50px;
+            display: block;
+            border-radius: 25px;
+            top: -25px;
+            position: absolute;
+            left: -25px;
+          }
+        `}
         data-testid={targetId}
         id={targetId}
         ref={targetRef}

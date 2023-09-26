@@ -1,4 +1,4 @@
-import { fireEvent, render, waitFor } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import BullsEye from '.'
 
 describe('BullsEye', () => {
@@ -20,14 +20,9 @@ describe('BullsEye', () => {
 
   it('should emit position and show info if debug is true', async () => {
     const mockPositionEmitter = jest.fn()
-    const { getByText } = renderComponent(true, mockPositionEmitter)
+    const { findByText } = renderComponent(true, mockPositionEmitter)
     fireEvent.mouseMove(window, { clientX: 100, clientY: 100 })
-    expect(getByText('x:100, y:100')).toBeInTheDocument()
-    await waitFor(
-      () => {
-        expect(mockPositionEmitter).toBeCalledWith({ x: 100, y: 100 })
-      },
-      { interval: 500 }
-    )
+    expect(await findByText('x:100, y:100')).toBeInTheDocument()
+    expect(mockPositionEmitter).toBeCalledWith({ x: 100, y: 100 })
   })
 })
