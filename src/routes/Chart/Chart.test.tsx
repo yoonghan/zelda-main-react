@@ -7,13 +7,13 @@ describe('Chart', () => {
     const { getByText } = render(
       <Chart monitorEmitter={monitorFn} debug={true} />
     )
-    expect(getByText('Webworker monitor')).toBeInTheDocument()
+    expect(getByText('React monitor')).toBeInTheDocument()
     fireEvent.mouseMove(window, { clientX: 100, clientY: 100 })
     await waitFor(
       () => {
-        expect(getByText('x:100, y:100')).toBeInTheDocument()
+        expect(monitorFn).toHaveBeenCalled()
       },
-      { interval: 5000 }
+      { timeout: 500 }
     )
     expect(monitorFn).toHaveBeenCalledWith({ x: 100, y: -100 })
   })

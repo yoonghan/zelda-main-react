@@ -7,10 +7,10 @@ import { type Position } from '../../components/BullsEye/type/position'
 
 interface Prop {
   monitorEmitter?: (position: Position) => void
-  debug: boolean
+  debug?: boolean
 }
 
-const Chart = ({ monitorEmitter, debug }: Prop) => {
+const Chart = ({ monitorEmitter, debug = false }: Prop) => {
   const { data: xData, append: appendX } = useChartUpdater([])
   const { data: yData, append: appendY } = useChartUpdater([])
 
@@ -33,10 +33,10 @@ const Chart = ({ monitorEmitter, debug }: Prop) => {
   return (
     <Container component="main" maxWidth="md" sx={{ pb: 10 }}>
       <Box>
-        <Typography variant={'h2'}>Webworker monitor</Typography>
+        <Typography variant={'h2'}>React monitor</Typography>
         <Typography component={'p'}>
-          This charter monitors performance for worker thread running
-          concurrently within the webbrowser.
+          This charter monitors performance for react performance and worker
+          thread running within the webbrowser.
         </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12}>
