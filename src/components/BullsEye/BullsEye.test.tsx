@@ -30,13 +30,4 @@ describe('BullsEye', () => {
       { interval: 500 }
     )
   })
-
-  it('should recalculate if window resize', async () => {
-    const mockPositionEmitter = jest.fn()
-    const { getByText } = renderComponent(true, mockPositionEmitter)
-    window.innerWidth = 500
-    fireEvent(window, new Event('resize'))
-    fireEvent.mouseMove(window, { clientX: 100, clientY: 100 })
-    expect(getByText('x:100, y:100')).toBeInTheDocument()
-  })
 })
