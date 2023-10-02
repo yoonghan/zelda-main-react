@@ -33,9 +33,9 @@ const Chart = ({ monitorEmitter, debug = false }: Prop) => {
   return (
     <Container component="main" maxWidth="md" sx={{ pb: 10 }}>
       <Box>
-        <Typography variant={'h2'}>React monitor</Typography>
+        <Typography variant={'h2'}>Plotter</Typography>
         <Typography component={'p'}>
-          This charter monitors performance for react performance and worker
+          This chart monitors performance for react performance and worker
           thread running within the webbrowser.
         </Typography>
         <Grid container spacing={2}>
