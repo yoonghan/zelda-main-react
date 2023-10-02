@@ -6,5 +6,5 @@
     "declarationDir": "dist"
   },
   "files": ["src/walcron-zelda-main-react.tsx"],
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "external_modules/**/typings/types.d.ts"]
 }

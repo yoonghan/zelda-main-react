@@ -7,16 +7,19 @@ import {
   reportWebVitals,
 } from '@yoonghan/walcron-microfrontend-shared'
 import './index.css'
+import { AuthenticationProvider } from './context/authentication'
 
 const router = createBrowserRouter(appRoutes)
 
 export default function Root() {
   return (
     <React.StrictMode>
-      <div className="main-container" data-testid="zelda-main">
-        <RouterProvider router={router} />
-        <Footer lastUpdatedYear={2023} />
-      </div>
+      <AuthenticationProvider>
+        <div className="main-container" data-testid="zelda-main">
+          <RouterProvider router={router} />
+          <Footer lastUpdatedYear={2023} />
+        </div>
+      </AuthenticationProvider>
     </React.StrictMode>
   )
 }
