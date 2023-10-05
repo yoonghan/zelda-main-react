@@ -18,10 +18,11 @@ describe('appRoute', () => {
   }
 
   const assertChartPageIsRoutable = async () => {
-    render(<Wrapper goto={['/chart']} />)
+    const { queryByText } = render(<Wrapper goto={['/chart']} />)
     await act(async () => {
       await new Promise((resolve) => setTimeout(resolve, 500))
     })
+    expect(queryByText('Not Found')).not.toBeInTheDocument()
   }
 
   it('should show exception when the route is not valid', () => {
