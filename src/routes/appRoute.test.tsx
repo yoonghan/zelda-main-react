@@ -1,6 +1,7 @@
 import { act, render } from '@testing-library/react'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import routes from './appRoute'
+import { AuthenticationProvider } from '../context/authentication'
 
 describe('appRoute', () => {
   beforeEach(() => {
@@ -9,7 +10,11 @@ describe('appRoute', () => {
 
   const Wrapper = ({ goto }: { goto: string[] }) => {
     const router = createMemoryRouter(routes, { initialEntries: goto })
-    return <RouterProvider router={router} />
+    return (
+      <AuthenticationProvider>
+        <RouterProvider router={router} />
+      </AuthenticationProvider>
+    )
   }
 
   const assertPageIsRoutable = (uri: string) => {
