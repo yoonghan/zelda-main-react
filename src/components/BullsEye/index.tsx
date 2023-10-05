@@ -1,4 +1,4 @@
-import { type CSSProperties, useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import useDistanceCalculator from './useDistanceCalculator'
 import { type Position } from './type/position'
 import { css } from '@emotion/css'

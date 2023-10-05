@@ -1,7 +1,7 @@
 import { type ReactNode, createContext, useEffect, useState } from 'react'
 import { auth$ } from '@walcron/zelda-shared-context'
 
-interface Props {
+export interface Props {
   error: string | undefined
   loggedIn: boolean
 }
@@ -11,7 +11,7 @@ export const defaultProps: Props = {
   loggedIn: false,
 }
 
-const AuthenticationContext = createContext(defaultProps)
+export const AuthenticationContext = createContext(defaultProps)
 
 export const AuthenticationConsumer = AuthenticationContext.Consumer
 
