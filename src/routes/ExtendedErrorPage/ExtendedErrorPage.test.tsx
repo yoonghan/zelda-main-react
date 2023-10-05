@@ -1,7 +1,7 @@
-import ErrorPage from './ExtendedErrorPage'
+import ErrorPage from '.'
 import { render, screen } from '@testing-library/react'
 import { RouterProvider, createMemoryRouter } from 'react-router-dom'
-import Root from './Root'
+import Root from '../Root'
 
 describe('ExtendedErrorPage', () => {
   const renderComponent = (initialPageEntry: string) => {
@@ -26,7 +26,9 @@ describe('ExtendedErrorPage', () => {
   }
 
   it('should render error page when route is not found', async () => {
+    const mock = jest.spyOn(console, 'warn').mockImplementation(() => {})
     renderComponent('/wrongurl')
     expect(await screen.findByText('Not Found')).toBeInTheDocument()
+    mock.mockRestore()
   })
 })
