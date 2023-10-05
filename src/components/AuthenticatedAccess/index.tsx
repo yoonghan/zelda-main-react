@@ -1,6 +1,7 @@
 import { type ReactNode, useCallback } from 'react'
 import { AuthenticationConsumer } from '../../context/authentication'
 import { css } from '@emotion/css'
+import { Box } from '@mui/material'
 
 const AuthenticatedAccess = ({ children }: { children: ReactNode }) => {
   const renderElem = useCallback(
@@ -10,13 +11,15 @@ const AuthenticatedAccess = ({ children }: { children: ReactNode }) => {
       }
 
       return (
-        <div
-          className={css`
-            font-weight: 300;
-          `}
-        >
-          Not authorized
-        </div>
+        <Box>
+          <div
+            className={css`
+              font-size: 2rem;
+            `}
+          >
+            Not authorized
+          </div>
+        </Box>
       )
     },
     [children]

@@ -4,6 +4,7 @@ import ErrorPage from './ExtendedErrorPage'
 import { type RouteObject } from 'react-router-dom'
 import Main from './Main'
 import Chart from './Chart'
+import AuthenticatedAccess from '../components/AuthenticatedAccess'
 
 const routes: RouteObject[] = [
   {
@@ -17,7 +18,11 @@ const routes: RouteObject[] = [
       },
       {
         path: 'chart',
-        element: <Chart />,
+        element: (
+          <AuthenticatedAccess>
+            <Chart />
+          </AuthenticatedAccess>
+        ),
       },
       {
         path: 'about',
